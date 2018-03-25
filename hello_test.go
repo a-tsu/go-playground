@@ -20,6 +20,8 @@ func TestHttpSuccess(t *testing.T) {
     ts := httptest.NewServer(http.HandlerFunc(handler))
     defer ts.Close()
 
+    go call1sec(flag)
+
     res, err := http.Get( ts.URL )
     if err != nil {
         t.Error("unexpected")
